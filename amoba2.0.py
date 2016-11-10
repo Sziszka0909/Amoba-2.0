@@ -29,20 +29,25 @@ def field_print(field):
 
 
 def hit1(field, characters):
-    x = input("Enter in a row! (Choose one of the following number: 1, 2, 3): ")
-    y = input("Enter in a column! (Choose one of the following number: 1, 2, 3): ")
-    print("")
-    try:
-        x = int(x)
-        y = int(y)
-    except ValueError:
-        print("Give me a " + bcolors.WARNING + "NUMBER! " + bcolors.ENDC + " \n")
-    if (x > 3 or x < 0 or y > 3 or y <0):
-        print("Out of " + bcolors.FAIL + "range. " + bcolors.ENDC + " \n")
-    x, y = x - 1, y - 1
-    if (field[x][y] == characters[0] or field[x][y] == characters[1]):
-        print("You can't mark " + bcolors.UNDERLINE + "that" + bcolors.ENDC + " spot. \n")
-    field[x][y] = characters[0]
+    while True:
+        x = input("Enter in a row! (Choose one of the following number: 1, 2, 3): ")
+        y = input("Enter in a column! (Choose one of the following number: 1, 2, 3): ")
+        print("")
+        try:
+            x = int(x)
+            y = int(y)
+            if (x > 3 or x < 0 or y > 3 or y <0):
+                print("Out of " + bcolors.FAIL + "range. " + bcolors.ENDC + " \n")
+            else:
+                x, y = x - 1, y - 1
+                if(field[x][y] == characters[0] or field[x][y] == characters[1]):
+                    print("You can't mark " + bcolors.UNDERLINE + "that" + bcolors.ENDC + " spot. \n")
+                else:
+                    field[x][y] = characters[0]
+                    break
+        except ValueError:
+            print("Give me a " + bcolors.WARNING + "NUMBER! " + bcolors.ENDC + " \n")
+
 
 
 def get_winner(field, characters):
@@ -139,21 +144,25 @@ def hit_ai(field, characters):
     field[airow][aicolumn] = characters[1]
 
 def hit2(field, characters):
-    x = input("Enter in a row! (Choose one of the following number: 1, 2, 3): ")
-    y = input("Enter in a column! (Choose one of the following number: 1, 2, 3): ")
-    print("")
-    try:
-        x = int(x)
-        y = int(y)
-    except ValueError:
-        print("Give me a " + bcolors.WARNING + "NUMBER! " + bcolors.ENDC + " \n")
-    if (x > 3 or x < 0 or y > 3 or y <0):
-        print("Out of " + bcolors.FAIL + "range. " + bcolors.ENDC + " \n")
-    x, y = x - 1, y - 1
-    if (field[x][y] == characters[0] or field[x][y] == characters[1]):
-        print("You can't mark " + bcolors.UNDERLINE + "that" + bcolors.ENDC + " spot. \n")
-    field[x][y] = characters[1]
-
+    while True:
+        x = input("Enter in a row! (Choose one of the following number: 1, 2, 3): ")
+        y = input("Enter in a column! (Choose one of the following number: 1, 2, 3): ")
+        print("")
+        try:
+            x = int(x)
+            y = int(y)
+            if (x > 3 or x < 0 or y > 3 or y <0):
+                print("Out of " + bcolors.FAIL + "range. " + bcolors.ENDC + " \n")
+            else:
+                x, y = x - 1, y - 1
+                if (field[x][y] == characters[0] or field[x][y] == characters[1]):
+                    print("You can't mark " + bcolors.UNDERLINE + "that" + bcolors.ENDC + " spot. \n")
+                else:
+                    field[x][y] = characters[1]
+                    break
+        except ValueError:
+            print("Give me a " + bcolors.WARNING + "NUMBER! " + bcolors.ENDC + " \n")
+        
 
 def run_game(gamemode, characters):
     field = create_field()
